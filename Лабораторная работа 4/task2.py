@@ -10,7 +10,7 @@ def get_freq_char(dict_):  # Функция для подсчета процен
     dict_freq = {}
     total_count = sum(dict_.values())  # Считаем общее количество всех символов
     for letter in dict_:  # Перебираем символы словаря
-        dict_freq[letter] = round((dict_.get(letter) / total_count), 2)  # Заменяем кол-во символов на их процентное отношение
+        dict_freq[letter] = round((dict_.get(letter) / total_count * 100), 1)  # Заменяем кол-во символов на их процентное отношение
     return dict_freq
 
 main_str = """
@@ -19,3 +19,5 @@ main_str = """
     Далее нужно отсортировать слова в алфавитном порядке, а после сортировки склеить их с помощью метода строк join. Приступим!!!!
 """
 print(get_count_char(main_str))
+print(get_freq_char(get_count_char(main_str)))
+print(sum(get_freq_char(get_count_char(main_str)).values())) # Проверяем, что сумма процентов = 100
